@@ -2,10 +2,10 @@ import React from 'react'
 import TodoLists from './TodoLists';
 import './todos.css'
 
-const Todos = () => {
+const Todos = ({texts}) => {
     return (
         <div className="todos__wrapper">
-            <TodoLists />
+            {texts.map((text, index) => (<TodoLists key={index} text={text}/>))}
         </div>
     )
 }
