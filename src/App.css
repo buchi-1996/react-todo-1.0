@@ -14,7 +14,7 @@ body{
 .add__btn{
   background:#f50057 !important;
   color: #fff !important;
-  position: absolute !important;
+  position: fixed !important;
   right: 20px;
   bottom: 40px;
 }
