@@ -16,6 +16,8 @@ body{
   color: #fff !important;
   position: fixed !important;
   right: 20px;
+  width: 60px;
+  height: 60px;
   bottom: 40px;
 }
 

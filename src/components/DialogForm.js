@@ -23,7 +23,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function FullScreenDialog({open, handleCloseEvt, input, onChange}) {
+export default function FullScreenDialog({open, handleCloseEvt, input, addTodo}) {
   const classes = useStyles();
     
 
@@ -42,7 +42,7 @@ export default function FullScreenDialog({open, handleCloseEvt, input, onChange}
           </Toolbar>
         </AppBar>
         <form>
-            <textarea value={input} onChange={onChange} className="text__field" id="note" placeholder="write a note"></textarea>
+            <textarea value={input} onChange={addTodo} className="text__field" id="note" placeholder="write a note"></textarea>
         </form>
       </Dialog>
     </div>

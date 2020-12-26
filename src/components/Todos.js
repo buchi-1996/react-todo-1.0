@@ -2,10 +2,10 @@ import React from 'react'
 import TodoLists from './TodoLists';
 import './todos.css'
 
-const Todos = ({texts}) => {
+const Todos = ({notes, toggleComplete, handleDelete}) => {
     return (
         <div className="todos__wrapper">
-            {texts.map((text, index) => (<TodoLists key={index} text={text}/>))}
+            {notes.map((note, index) => (<TodoLists key={index} {...note} toggleComplete={toggleComplete} handleDelete={handleDelete}/>))}
         </div>
     )
 }

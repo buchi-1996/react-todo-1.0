@@ -10,9 +10,42 @@ import FullScreenDialog from './components/DialogForm';
 
 
 function App() {
-  const [notes, setNotes] = useState(['walk the dog', 'take rubbish out']);
-  const [open, setOpen] = React.useState(false);
+  const [notes, setNotes] = useState([
+    {
+      id: 1,
+      title: 'walk the dog',
+      completed: false
+    },
+    {
+      id: 2,
+      title: 'take rubbish out',
+      completed: false
+    },
+    {
+      id: 3,
+      title: 'meet with girlfriend for dinner',
+      completed: false
+    }
+  ]);
+  const [open, setOpen] = useState(false);
   const [input, setInput] = useState('');
+
+  // Toggle Menu state
+  const [anchorEl, setAnchorEl] = useState(null);
+  const openMenu = Boolean(anchorEl);
+
+  const handleOpenMenu = (e) => {
+    setAnchorEl(e.currentTarget);
+  }
+
+  const handleCloseMenu = (e) => {
+    if (e.target.classList.contains('menu')) {
+      setNotes([]);
+    }
+    setAnchorEl(null);
+  }
+
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -20,7 +53,7 @@ function App() {
 
   const handleClose = (e) => {
     e.preventDefault();
-    input !== '' && setNotes(prev => [input, ...prev]);
+    input !== '' && setNotes(prev => [{title: input}, ...prev]);
     setInput('');
     setOpen(false);
   };
@@ -29,19 +62,33 @@ function App() {
     setInput(e.target.value);
   }
 
- 
+  const toggleComplete = (id) => {
+     const checkItem = notes.map(note => {
+        if(note.id === id){
+          note.completed = !note.completed;
+        }
+        return note;
+      })
+      setNotes(checkItem);
+  }
+
+  const handleDelete = (id) => {
+    const newArr = notes.filter(note => note.id !== id);
+    setNotes(newArr);
+  }
+
   return (
     <div className="app">
-      <Navbar />
-      <Todos texts={notes} />
+      <Navbar open={openMenu} openClick={handleOpenMenu} closeClick={handleCloseMenu} anchorEl={anchorEl} />
+      <Todos notes={notes} toggleComplete={toggleComplete} handleDelete={handleDelete} />
       <IconButton onClick={handleClickOpen} color="secondary" className="add__btn">
         <AddIcon />
       </IconButton>
       <FullScreenDialog open={open}
         handleCloseEvt={handleClose}
         input={input}
-        onChange={handleChange}
-       />
+        addTodo={handleChange}
+      />
 
     </div>
   );
