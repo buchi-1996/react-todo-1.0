@@ -5,24 +5,24 @@ import Todos from './components/Todos';
 import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton';
 import FullScreenDialog from './components/DialogForm';
-
+import { v4 as uuidv4 } from 'uuid';
 
 
 
 function App() {
   const [notes, setNotes] = useState([
     {
-      id: 1,
+      id: uuidv4(),
       title: 'walk the dog',
       completed: false
     },
     {
-      id: 2,
+      id: uuidv4(),
       title: 'take rubbish out',
       completed: false
     },
     {
-      id: 3,
+      id: uuidv4(),
       title: 'meet with girlfriend for dinner',
       completed: false
     }
@@ -53,9 +53,16 @@ function App() {
 
   const handleClose = (e) => {
     e.preventDefault();
-    input !== '' && setNotes(prev => [{title: input}, ...prev]);
+    console.log(e.target);
+    if(e.target.classList.contains('MuiButton-label')){
+      input !== '' && setNotes(prev => [{id: uuidv4(), title: input}, ...prev]);
+      setOpen(false);
+    }else{
+      setOpen(false);
+    }
     setInput('');
-    setOpen(false);
+    
+    
   };
 
   const handleChange = (e) => {
@@ -84,7 +91,8 @@ function App() {
       <IconButton onClick={handleClickOpen} color="secondary" className="add__btn">
         <AddIcon />
       </IconButton>
-      <FullScreenDialog open={open}
+      <FullScreenDialog 
+        open={open}
         handleCloseEvt={handleClose}
         input={input}
         addTodo={handleChange}

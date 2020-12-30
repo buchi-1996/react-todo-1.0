@@ -36,7 +36,7 @@ export default function FullScreenDialog({open, handleCloseEvt, input, addTodo})
             <IconButton edge="start" color="inherit" onClick={handleCloseEvt} aria-label="close">
               <CloseIcon />
             </IconButton>
-            <Button  autoFocus color="inherit" onClick={handleCloseEvt}>
+            <Button  autoFocus color="inherit" onClick={handleCloseEvt} className="save__btn">
               save
             </Button>
           </Toolbar>
