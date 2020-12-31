@@ -54,8 +54,8 @@ function App() {
   const handleClose = (e) => {
     e.preventDefault();
     console.log(e.target);
-    if(e.target.classList.contains('MuiButton-label')){
-      input !== '' && setNotes(prev => [{id: uuidv4(), title: input}, ...prev]);
+    if(e.target.classList.contains('MuiButton-root' && 'MuiButton-label')){
+      input !== '' && setNotes(prev => [{id: uuidv4(), title: input, completed: false}, ...prev]);
       setOpen(false);
     }else{
       setOpen(false);

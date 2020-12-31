@@ -20,7 +20,6 @@ const TodoLists = ({id, title, completed, toggleComplete, handleDelete } ) => {
             <ListItem className="card__inner">
                 <Checkbox
                     onChange={() => toggleComplete(id)}
-
                 />
                 <ListItemText primary={title} secondary={(<i>uncategorized</i>)} style={textStyle()} />
                 <IconButton onClick={() => handleDelete(id)}>
