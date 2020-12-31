@@ -96,10 +96,13 @@ function App() {
         handleCloseEvt={handleClose}
         input={input}
         addTodo={handleChange}
+        onOpen={handleOpen}
       />
 
     </div>
   );
+
+  
 }
 
 export default App;
