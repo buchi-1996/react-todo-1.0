@@ -4,20 +4,20 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Checkbox from '@material-ui/core/Checkbox';
 import './todoList.css';
 
-const TodoLists = ({id, title, completed, toggleComplete, handleDelete } ) => {
+const TodoLists = ({ id, title, completed, toggleComplete, handleDelete }) => {
 
     const textStyle = () => {
-       return {
-           textDecoration: !completed ? 'none' : 'line-through'
-       }
+        return {
+            textDecoration: !completed ? 'none' : 'line-through'
+        }
     }
 
-    
+
 
     return (
         <div className="todo__card">
-            <Divider />
-            <ListItem className="card__inner">
+            {/* <Divider /> */}
+            <ListItem divider button className="card__inner">
                 <Checkbox
                     onChange={() => toggleComplete(id)}
                 />

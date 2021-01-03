@@ -5,6 +5,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { Menu, Fade } from '@material-ui/core';
 import './toggleMenu.css'
 
+
+
 const ToggleMenu = ({open, onClick, onClose, anchorEl}) => {
     return (
         <>
@@ -13,6 +15,7 @@ const ToggleMenu = ({open, onClick, onClose, anchorEl}) => {
             </IconButton>
 
             <Menu
+                className="menu"
                 id="fade-menu"
                 anchorEl={anchorEl}
                 keepMounted
@@ -20,7 +23,7 @@ const ToggleMenu = ({open, onClick, onClose, anchorEl}) => {
                 onClose={onClose}
                 TransitionComponent={Fade}
             >
-                <MenuItem className="menu" onClick={onClose}>DeleteAll</MenuItem>
+                <MenuItem  className="menu__list" onClick={onClose}>DeleteAll</MenuItem>
             </Menu>
         </>
     )

@@ -10,23 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 function App() {
-  const [notes, setNotes] = useState([
-    {
-      id: uuidv4(),
-      title: 'walk the dog',
-      completed: false
-    },
-    {
-      id: uuidv4(),
-      title: 'take rubbish out',
-      completed: false
-    },
-    {
-      id: uuidv4(),
-      title: 'meet with girlfriend for dinner',
-      completed: false
-    }
-  ]);
+  const [notes, setNotes] = useState([]);
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState('');
 

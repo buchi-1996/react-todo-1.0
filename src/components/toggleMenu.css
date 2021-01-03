@@ -1,4 +1,7 @@
+.menu__list{
+    padding: 0 2rem !important;
+}
+
 .menu{
-    padding: 0 20px !important;
-    
+    padding: 0 !important;
 }
