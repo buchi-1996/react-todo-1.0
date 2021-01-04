@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider, ListItem, ListItemText, IconButton } from '@material-ui/core';
+import { ListItem, ListItemText, IconButton } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Checkbox from '@material-ui/core/Checkbox';
 import './todoList.css';
@@ -16,7 +16,6 @@ const TodoLists = ({ id, title, completed, toggleComplete, handleDelete }) => {
 
     return (
         <div className="todo__card">
-            {/* <Divider /> */}
             <ListItem divider button className="card__inner">
                 <Checkbox
                     onChange={() => toggleComplete(id)}
