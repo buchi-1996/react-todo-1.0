@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import TodoLists from './TodoLists';
 import FullScreenDialog from './DialogForm';
+import { green, amber, grey } from '@material-ui/core/colors';
 import './todos.css'
 import { Slide } from '@material-ui/core';
 
@@ -61,7 +62,7 @@ const Todos = ({ notes, toggleComplete, handleDelete, inputEdit, setInput, setNo
                 addTodo={handleUpdateEdit}
                 buttonText="save edit"
                 Transition={Transition}
-                back="goldenrod"
+                back={amber[500]}
             />
         </>
     )

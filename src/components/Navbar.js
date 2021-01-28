@@ -1,12 +1,13 @@
 import React from 'react'
 import { AppBar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { deepPurple } from '@material-ui/core/colors';
 import ToggleMenu from './ToggleMenu';
 
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
-        background: theme.palette.primary.main,
+        background: theme.palette.primary.main = deepPurple[500],
         padding: '8px 15px',
         '& div': {
             display: 'flex',

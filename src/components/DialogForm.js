@@ -40,7 +40,7 @@ export default function FullScreenDialog({open, handleCloseEvt, input, addTodo, 
           </Toolbar>
         </AppBar>
         <form>
-            <textarea value={input} onChange={addTodo} className="text__field" id="note" placeholder="write a note"></textarea>
+            <textarea autoFocus value={input} onChange={addTodo} className="text__field" id="note" placeholder="write a note"></textarea>
         </form>
       </Dialog>
   );

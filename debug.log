@@ -3,3 +3,5 @@
 [1230/190426.478:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
 [1231/192931.858:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
 [0127/090621.661:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[0128/230731.484:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\BUCHI UKAIGWE\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\6797e1e7-8c1e-480e-9803-e36e454f6983: The system cannot find the path specified. (0x3)
+[0128/230744.075:ERROR:http_transport_win.cc(276)] WinHttpSendRequest: The operation completed successfully. (0x0)
