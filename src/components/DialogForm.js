@@ -6,38 +6,36 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import Slide from '@material-ui/core/Slide';
 import './dialog.css'
 
 const useStyles = makeStyles((theme) => ({
-  appBar: {
+  appBar: props => ( {
     position: 'relative',
-  },
-  title: {
-    marginLeft: theme.spacing(2),
-    flex: 1,
-  },
+    background: `${props.background} !important`,
+  }),
+  
 }));
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="left" ref={ref} {...props} />;
-});
 
-export default function FullScreenDialog({open, handleCloseEvt, input, addTodo}) {
-  const classes = useStyles();
-    
+
+
+
+export default function FullScreenDialog({open, handleCloseEvt, input, addTodo, buttonText, Transition, back}) {
+  const props = {
+    background: back,
+  }
+  const classes = useStyles(props);
 
 
   return (
-    <div>
-      <Dialog fullScreen open={open} onClose={handleCloseEvt} TransitionComponent={Transition}>
+      <Dialog fullScreen open={open} onClose={handleCloseEvt} TransitionCompnent={Transition} >
         <AppBar position="static" className={classes.appBar}>
           <Toolbar className="top__bar">
             <IconButton edge="start" color="inherit" onClick={handleCloseEvt} aria-label="close">
               <CloseIcon />
             </IconButton>
             <Button  autoFocus color="inherit" onClick={handleCloseEvt} className="save__btn">
-              save
+              {buttonText}
             </Button>
           </Toolbar>
         </AppBar>
@@ -45,6 +43,5 @@ export default function FullScreenDialog({open, handleCloseEvt, input, addTodo})
             <textarea value={input} onChange={addTodo} className="text__field" id="note" placeholder="write a note"></textarea>
         </form>
       </Dialog>
-    </div>
   );
 }

@@ -5,9 +5,13 @@ import Todos from './components/Todos';
 import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton';
 import FullScreenDialog from './components/DialogForm';
+import Slide from '@material-ui/core/Slide';
 import { v4 as uuidv4 } from 'uuid';
 
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="left" ref={ref} {...props} />;
+});
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -23,7 +27,7 @@ function App() {
   }
 
   const handleCloseMenu = (e) => {
-    if (e.target.classList.contains('menu')) {
+    if (e.target.classList.contains('menu__list')) {
       setNotes([]);
     }
     setAnchorEl(null);
@@ -38,15 +42,14 @@ function App() {
   const handleClose = (e) => {
     e.preventDefault();
     console.log(e.target);
-    if(e.target.classList.contains('MuiButton-root' && 'MuiButton-label')){
-      input !== '' && setNotes(prev => [{id: uuidv4(), title: input, completed: false}, ...prev]);
+    if (e.target.classList.contains('MuiButtonBase-root') || e.target.classList.contains('MuiButton-label')) {
+      input !== '' && setNotes(prev => [{ id: uuidv4(), title: input }, ...prev]);
       setOpen(false);
-    }else{
+    } else {
       setOpen(false);
     }
     setInput('');
-    
-    
+
   };
 
   const handleChange = (e) => {
@@ -54,13 +57,13 @@ function App() {
   }
 
   const toggleComplete = (id) => {
-     const checkItem = notes.map(note => {
-        if(note.id === id){
-          note.completed = !note.completed;
-        }
-        return note;
-      })
-      setNotes(checkItem);
+    const checkItem = notes.map(note => {
+      if (note.id === id) {
+        note.completed = !note.completed;
+      }
+      return note;
+    })
+    setNotes(checkItem);
   }
 
   const handleDelete = (id) => {
@@ -70,22 +73,37 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar open={openMenu} openClick={handleOpenMenu} closeClick={handleCloseMenu} anchorEl={anchorEl} />
-      <Todos notes={notes} toggleComplete={toggleComplete} handleDelete={handleDelete} />
-      <IconButton onClick={handleClickOpen} color="secondary" className="add__btn">
+      <Navbar
+        open={openMenu}
+        openClick={handleOpenMenu}
+        closeClick={handleCloseMenu}
+        anchorEl={anchorEl}
+      />
+      <Todos notes={notes}
+        toggleComplete={toggleComplete}
+        handleDelete={handleDelete}
+        inputEdit={input}
+        setInput={text => setInput(text)}
+        setNotes={note => setNotes(note)}
+      />
+      <IconButton onClick={handleClickOpen}
+        color="secondary" className="add__btn">
         <AddIcon />
       </IconButton>
-      <FullScreenDialog 
+      <FullScreenDialog
         open={open}
         handleCloseEvt={handleClose}
         input={input}
         addTodo={handleChange}
+        buttonText="save"
+        Transition={Transition}
+        back="green"
       />
 
     </div>
   );
 
-  
+
 }
 
 export default App;

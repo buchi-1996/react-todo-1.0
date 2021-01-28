@@ -1,9 +1,4 @@
 .card__inner{
-    display: flex;
-    align-items: center;
+    display: flex !important;
+    align-items: flex-start !important;
 }
-
-/* .card__text{
-    flex: 1;
-    color: red !important;
-} */

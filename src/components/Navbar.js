@@ -1,7 +1,6 @@
 import React from 'react'
 import { AppBar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import CollectionsBookmarkIcon from '@material-ui/icons/CollectionsBookmark';
 import ToggleMenu from './ToggleMenu';
 
 
@@ -28,7 +27,7 @@ const Navbar = ({ open, openClick, closeClick, anchorEl }) => {
         <AppBar position="static" className={classes.appBar}>
             <div>
                 <h3>
-                    TodoList <CollectionsBookmarkIcon style={{ marginLeft: 10 }} />
+                    NotePad-- 🚀 
                 </h3>
                 <ToggleMenu open={open} onClick={openClick} onClose={closeClick} anchorEl={anchorEl} />
             </div>
