@@ -6,7 +6,7 @@ import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton';
 import FullScreenDialog from './components/DialogForm';
 import Slide from '@material-ui/core/Slide';
-import { green, amber, grey } from '@material-ui/core/colors';
+import { green } from '@material-ui/core/colors';
 import { v4 as uuidv4 } from 'uuid';
 
 

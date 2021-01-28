@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import TodoLists from './TodoLists';
 import FullScreenDialog from './DialogForm';
-import { green, amber, grey } from '@material-ui/core/colors';
+import { amber } from '@material-ui/core/colors';
 import './todos.css'
 import { Slide } from '@material-ui/core';
 
