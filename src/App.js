@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import Todos from './components/Todos';
@@ -14,10 +14,28 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="left" ref={ref} {...props} />;
 });
 
+
 function App() {
-  const [notes, setNotes] = useState([]);
+
+  const initialState = JSON.parse(localStorage.getItem('notes')) || [];
+
+  // const initLs = () => {
+  //   let todoItems;
+  //   if(localStorage.getItem('notes') === null){
+  //     todoItems = [];
+  //   }else{
+  //     todoItems = JSON.parse(localStorage.getItem('notes'))
+  //   }
+  //   return todoItems;
+  // }
+
+  const [notes, setNotes] = useState(initialState);
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState('');
+
+  useEffect(() => {
+    localStorage.setItem('notes', JSON.stringify(notes))
+  }, [notes]);
 
   // Toggle Menu state
   const [anchorEl, setAnchorEl] = useState(null);

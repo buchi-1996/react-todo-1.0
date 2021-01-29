@@ -13,6 +13,7 @@ const Todos = ({ notes, toggleComplete, handleDelete, inputEdit, setInput, setNo
 
     const [open, setOpen] = useState(false);
     const [editId, setEditId ] = useState('');
+    
 
     const handleEditOpen = (id) => {
         setEditId(id);
@@ -42,6 +43,7 @@ const Todos = ({ notes, toggleComplete, handleDelete, inputEdit, setInput, setNo
             })
             console.log(notes)
             setNotes(notes);
+            localStorage.setItem('notes', JSON.stringify(notes))
             setOpen(false);
           }else{
             setOpen(false);
