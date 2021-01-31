@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const TodoLists = ({ id, title, completed, toggleComplete, handleDelete, open }) => {
+const TodoLists = ({ id, title, completed, category, toggleComplete, handleDelete, open}) => {
 
     const classes = useStyles();
 
@@ -28,11 +28,12 @@ const TodoLists = ({ id, title, completed, toggleComplete, handleDelete, open })
 
     return (
         <div className="todo__card">
+            <p></p>
             <ListItem divider  button className="card__inner" >
                 <IconButton onClick={() => toggleComplete(id)}  className={classes.iconButton}>
                     {!completed ? <CheckBoxOutlineBlankIcon /> : <CheckBoxIcon />}
                 </IconButton>
-                <ListItemText onClick={() => open(id)} primary={title} secondary={(<i>uncategorized</i>)} style={textStyle()} />
+                <ListItemText onClick={() => open(id)} primary={title} secondary={(<i>{category = category === false ? 'uncategorized' : category}</i>)} style={textStyle()} />
                 <IconButton onClick={() => handleDelete(id)}>
                     <DeleteIcon />
                 </IconButton>

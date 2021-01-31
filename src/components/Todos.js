@@ -2,17 +2,13 @@ import React, { useState } from 'react'
 import TodoLists from './TodoLists';
 import FullScreenDialog from './DialogForm';
 import { amber } from '@material-ui/core/colors';
-import './todos.css'
-import { Slide } from '@material-ui/core';
+import './todos.css';
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-  });
-
-const Todos = ({ notes, toggleComplete, handleDelete, inputEdit, setInput, setNotes }) => {
+const Todos = ({ notes, toggleComplete, handleDelete, inputEdit, setInput, setNotes  }) => {
 
     const [open, setOpen] = useState(false);
     const [editId, setEditId ] = useState('');
+    const [category, setCategory] = useState('');
     
 
     const handleEditOpen = (id) => {
@@ -38,6 +34,7 @@ const Todos = ({ notes, toggleComplete, handleDelete, inputEdit, setInput, setNo
             notes.map(note => {
                 if(note.id === editId){
                     note.title = inputEdit;
+                    note.category = category;
                 }
                 return note;
             })
@@ -54,7 +51,7 @@ const Todos = ({ notes, toggleComplete, handleDelete, inputEdit, setInput, setNo
     return (
         <>
             <div className="todos__wrapper">
-                {notes.map((note, index) => (<TodoLists key={index} {...note} toggleComplete={toggleComplete} handleDelete={handleDelete} open={handleEditOpen} />))}
+                {notes.map((note, index) => (<TodoLists key={index} {...note} toggleComplete={toggleComplete} handleDelete={handleDelete} open={handleEditOpen}/>))}
             </div>
 
             <FullScreenDialog
@@ -63,8 +60,8 @@ const Todos = ({ notes, toggleComplete, handleDelete, inputEdit, setInput, setNo
                 input={inputEdit}
                 addTodo={handleUpdateEdit}
                 buttonText="save edit"
-                Transition={Transition}
                 back={amber[500]}
+                onClick={text => setCategory(text)}
             />
         </>
     )

@@ -9,7 +9,7 @@
 
 .text__field{
     width: 100%;
-    height: calc(100vh - 70px);
+    height: 85vh;
     outline: none;
     padding: 20px;
     font-family: 'Nunito sans', 'san-serif';
