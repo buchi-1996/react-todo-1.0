@@ -2,18 +2,23 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import Todos from './components/Todos';
+import { makeStyles } from '@material-ui/core/styles';
 import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton';
 import FullScreenDialog from './components/DialogForm';
 import { green } from '@material-ui/core/colors';
 import { v4 as uuidv4 } from 'uuid';
 
-
+const useStyles = makeStyles((theme) => ({
+  App: {
+    color: theme.palette.type,
+  }
+}))
 
 
 
 function App() {
-
+  const classes = useStyles();
   const initialState = JSON.parse(localStorage.getItem('notes')) || [];
 
   const [notes, setNotes] = useState(initialState);
@@ -81,7 +86,7 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <div className={classes.App}>
       <Navbar
         open={openMenu}
         openClick={handleOpenMenu}

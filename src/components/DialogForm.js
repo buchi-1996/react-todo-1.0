@@ -94,22 +94,22 @@ export default function FullScreenDialog({ open, handleCloseEvt, input, addTodo,
       </form>
       <AppBar position="fixed" className={classes.bottomAppBar}>
         <Toolbar className={classes.Toolbar}>
-          <Tooltip title="Home">
+          <Tooltip enterTouchDelay={0} title="Home">
             <Fab onClick={() => onClick('Home')} size="small" className={classes.home}>
               <HomeWorkIcon />
             </Fab>
           </Tooltip>
-          <Tooltip title="Office">
+          <Tooltip enterTouchDelay={0} title="Office">
             <Fab onClick={() => onClick('Office')} size="small" className={classes.office}>
               <EmojiTransportationIcon/>
             </Fab>
           </Tooltip>
-          <Tooltip title="Church">
+          <Tooltip enterTouchDelay={0} title="Church">
             <Fab onClick={() => onClick('Church')} size="small" className={classes.church}>
               <AccountBalanceIcon />
             </Fab>
           </Tooltip>
-          <Tooltip title="Gym">
+          <Tooltip enterTouchDelay={0} title="Gym">
             <Fab onClick={() => onClick('Gym')}  size="small" className={classes.gym}>
               <FitnessCenterIcon />
             </Fab>
